@@ -48,11 +48,11 @@ pipeline {
                 sh "mkdir mysql-gitrepo"
                     dir('mysql-gitrepo') {
                         sh 'git clone https://github.com/satyamuralidhar/mysql-helm.git'
-                        sh 'cd mysql-helm'
+                        sh 'cd mysql-helm && cd mysql && mkdir charts && cd ..'
                         sh 'ls -la'
                         sh "sed -i '/tag/s/:.*\$/: v${BUILD_NUMBER}/g' mysql-helm/mysql/values.yaml"
                         //sh 'helm install mysql --generate-name'
-                        sh 'helm upgrade --install mysql --values mysql-helm/mysql/values.yaml'
+                        sh 'helm upgrade --install mysql --values mysql-helm/mysql/values.yaml mysql-helm/mysql/charts/'
                     }        
                 
             }
