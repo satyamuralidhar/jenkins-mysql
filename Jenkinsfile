@@ -52,7 +52,7 @@ pipeline {
                         sh 'ls -la'
                         sh "sed -i '/tag/s/:.*\$/: v${BUILD_NUMBER}/g' mysql-helm/mysql/values.yaml"
                         //sh 'helm install mysql --generate-name'
-                        sh 'helm upgrade --install mysql-1581661548 --values mysql-helm/mysql/values.yaml mysql'
+                        sh 'helm upgrade mysql-1581661548 --values mysql-helm/mysql/values.yaml mysql'
                     }        
                 
             }
