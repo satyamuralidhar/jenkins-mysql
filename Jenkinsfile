@@ -50,10 +50,10 @@ pipeline {
                         sh 'git clone https://github.com/satyamuralidhar/mysql-helm.git'
                         sh 'cd mysql-helm'
                         sh 'ls -la'
-                        
+                        sh "sed -i '/tag/s/:.*\$/: v${BUILD_NUMBER}/g' mysql-helm/mysql/values.yaml"
                         //sh 'helm install mysql --generate-name'
                         sh 'helm upgrade mysql --install mysql'
-                        sh "sed -i '/tag/s/:.*\$/: v${BUILD_NUMBER}/g' mysql-helm/mysql/values.yaml"
+                      
                     }        
                 
             }
