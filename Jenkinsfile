@@ -51,7 +51,7 @@ pipeline {
               sh "sed -i '/tag/s/:.*\$/: v${BUILD_NUMBER}/g' mysql-helm/mysql/values.yaml"
               sh 'pwd'
                         //sh 'helm install mysql --generate-name'
-              sh 'helm upgrade mysql --install mysql'        
+              sh 'helm repo update && helm upgrade mysql --install mysql'        
                 
             }
         }
