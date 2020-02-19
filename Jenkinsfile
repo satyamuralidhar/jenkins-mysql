@@ -50,7 +50,7 @@ pipeline {
               sh 'ls -la'
               sh "sed -i '/tag/s/:.*\$/: v${BUILD_NUMBER}/g' mysql-helm/mysql/values.yaml"
               //sh 'pwd && helm upgrade mysql --install mysql-helm/mysql'
-              sh label: '', script: 'cd /var/lib/jenkins/workspace/mysql-helm/mysql-helm'
+              sh label: '', script: 'cd /var/lib/jenkins/workspace/mysql-helm/'
               sh 'helm upgrade --install --force mysql mysql-helm/mysql'  
               
                         //sh 'helm install mysql --generate-name'
